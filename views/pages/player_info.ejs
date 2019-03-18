@@ -18,6 +18,14 @@
 							 <!-- TODO: Populate our select with player options
 							 			For each player, set a new option with a value matching the palyer's id, 
 							 			but will display the player's name-->
+							 	<%
+							 	for (var i = 0; i < players.count; i++)
+							 	{
+							 		var opt = '';
+							 		opt = '<option value =' + players[i].id + '>' + players[i].name + '</option>';
+							 		%>
+							 		<%- opt %>
+							 	}
 						</select>
 					</form>
 				  </div>
@@ -31,27 +39,40 @@
 							 			If a player has been selected, fill in their information in each of the fields below.
 							 		    You'll need to calculate here the player's average rushing, receiving, and passing yards.-->
 							<th>Year</th>
-							<td>	</td>
+							<td>
+							<%
+							var yr = everything.year;
+							%>
+							<%- yr %>
+							</td>
 						</tr>
 						<tr>
 							<th>Major</th>
-							<td>	</td>
+							<td>
+							<%
+							var maj = everything.maj;
+							%>
+							<%- maj %>
+							</td>
 						</tr>
 						<tr>
 							<th>Games Played</th>
-							<td>	</td>
+							<td>
+							<%
+							var games = everything.games_played
+							</td>
 						</tr>
 						<tr>
-							<td>Passing Yards: </td>
-							<td>Avg. Passing Yards: </td>
+							<td>Passing Yards: <% var pyards = everything.passing_yards %><%- pyards %></td>
+							<td>Avg. Passing Yards: <% var avepyards = parseInt(everything.passing_yards) / parseInt(everything.games_played) %><%- avepyards %></td>
 						</tr>
 						<tr>
-							<td>Rushing Yards: </td>
-							<td>Avg. Rushing Yards: </td>
+							<td>Rushing Yards: <% var rushyards = everything.rushing_yards %><%- rushyards %></td>
+							<td>Avg. Rushing Yards: <% var averushyards = parseInt(everything.rushing_yards) / parseInt(everything.games_played) %><%- averushyards %></td>
 						</tr>
 						<tr>
-							<td>Receiving Yards: </td>
-							<td>Avg. Receiving Yards: </td>
+							<td>Receiving Yards: <% var recyards = everything.receiving_yards %><%- recyards %></td>
+							<td>Avg. Receiving Yards: <% var averecyards = parseInt(everything.receiving_yards) / parseInt(everything.games_played) %><%- averecyards %></td>
 						</tr>
 					</table>
 				</div>

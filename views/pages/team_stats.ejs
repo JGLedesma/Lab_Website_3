@@ -36,9 +36,9 @@
 					row += '<tr>';
 					row += '<td>' + games[i].game_date '</td>';
 					row += '<td>' + games[i].visitor_name '</td>';
-					row += '<td>' + games[i].visitor_score '</td>';
 					row += '<td>' + games[i].home_score '</td>';
-					if (parseInt(games[i].visitor_score) > parseInt(games.home_score))
+					row += '<td>' + games[i].visitor_score '</td>';
+					if (parseInt(games[i].visitor_score) > parseInt(games[i].home_score))
 					{
 						row += '<td>' + games[i].visitor_name + '</td>';
 					}
