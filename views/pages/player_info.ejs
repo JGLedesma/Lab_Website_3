@@ -8,7 +8,10 @@
 				<!-- TODO: Modify the ejs code below, to conditionally set the image_src to be from our chosen player -->
 				  <% 
 				  var image_src = '../resources/img/helmet.jpg';
-				  
+				  if(playerinfo.img_src)
+				  {
+				  	image_src = playerinfo.img_src;
+				  }
 				  %>
 				 <img class="card-img-top" id="player_img" src= "<%- image_src %>" alt="Image of Football Player">
 				  <div class="card-body mx-auto">
@@ -19,10 +22,10 @@
 							 			For each player, set a new option with a value matching the palyer's id, 
 							 			but will display the player's name-->
 							 	<%
-							 	for (var i = 0; i < players.count; i++)
+							 	for (var i = 0; i < playeridname.count; i++)
 							 	{
 							 		var opt = '';
-							 		opt = '<option value =' + players[i].id + '>' + players[i].name + '</option>';
+							 		opt = '<option value =' + playeridname[i].id + '>' + playeridname[i].name + '</option>';
 							 		%>
 							 		<%- opt %>
 							 	}
@@ -41,7 +44,7 @@
 							<th>Year</th>
 							<td>
 							<%
-							var yr = everything.year;
+							var yr = playerinfo.year;
 							%>
 							<%- yr %>
 							</td>
@@ -50,7 +53,7 @@
 							<th>Major</th>
 							<td>
 							<%
-							var maj = everything.maj;
+							var maj = playerinfo.maj;
 							%>
 							<%- maj %>
 							</td>
@@ -59,20 +62,22 @@
 							<th>Games Played</th>
 							<td>
 							<%
-							var games = everything.games_played
+							var games = playerinfo.games_played;
+							%>
+							<%- games %>
 							</td>
 						</tr>
 						<tr>
-							<td>Passing Yards: <% var pyards = everything.passing_yards %><%- pyards %></td>
-							<td>Avg. Passing Yards: <% var avepyards = parseInt(everything.passing_yards) / parseInt(everything.games_played) %><%- avepyards %></td>
+							<td>Passing Yards: <% var pyards = playerinfo.passing_yards %><%- pyards %></td>
+							<td>Avg. Passing Yards: <% var avepyards = parseInt(playerinfo.passing_yards) / parseInt(playerinfo.games_played); %><%- avepyards %></td>
 						</tr>
 						<tr>
-							<td>Rushing Yards: <% var rushyards = everything.rushing_yards %><%- rushyards %></td>
-							<td>Avg. Rushing Yards: <% var averushyards = parseInt(everything.rushing_yards) / parseInt(everything.games_played) %><%- averushyards %></td>
+							<td>Rushing Yards: <% var rushyards = playerinfo.rushing_yards %><%- rushyards %></td>
+							<td>Avg. Rushing Yards: <% var averushyards = parseInt(playerinfo.rushing_yards) / parseInt(playerinfo.games_played); %><%- averushyards %></td>
 						</tr>
 						<tr>
-							<td>Receiving Yards: <% var recyards = everything.receiving_yards %><%- recyards %></td>
-							<td>Avg. Receiving Yards: <% var averecyards = parseInt(everything.receiving_yards) / parseInt(everything.games_played) %><%- averecyards %></td>
+							<td>Receiving Yards: <% var recyards = playerinfo.receiving_yards %><%- recyards %></td>
+							<td>Avg. Receiving Yards: <% var averecyards = parseInt(playerinfo.receiving_yards) / parseInt(playerinfo.games_played); %><%- averecyards %></td>
 						</tr>
 					</table>
 				</div>
